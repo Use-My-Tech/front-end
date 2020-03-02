@@ -24,15 +24,24 @@ function App() {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
       <Route path="/signup">
         <Signup />
       </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/owner">
+        
+      </Route>
+      <Route path="/renter">
+
+      </Route>
+      
     </div>
   );
 }
+
+
 
 function mapStateToProps(state) {
   return {

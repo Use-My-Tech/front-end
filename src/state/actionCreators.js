@@ -14,8 +14,10 @@ export const onLogin = formValues => dispatch => {
   axios
     .post("https://usetechstuff.herokuapp.com/api/login", formValues)
     .then(res => {
+      console.log(res.data.user.department)
       dispatch({ type: types.LOGIN });
       localStorage.setItem("token", res.data.token);
+      
     })
     .catch(err => {
       console.log(err);
@@ -37,7 +39,7 @@ export const onSignup = formValues => dispatch => {
     .post("https://usetechstuff.herokuapp.com/api/register", formValues)
     .then(res => {
       dispatch({ type: types.SIGNUP });
-      useHistory().push("/login");
+      
     })
     .catch(err => {
       console.log(err);

@@ -24,16 +24,17 @@ function Signup({ signupForm, changeHandler, departmentCheck, onSignup }) {
             value={signupForm.password}
           />
         </label>
-        <label>
-          type: {checked ? "renter" : "owner"}
-          <input
-            type="checkbox"
-            onClick={evt => {
-              setChecked(!checked);
-              departmentCheck(checked);
-            }}
-          />
-        </label>
+        <label>type: </label>
+        <button
+          type="button"
+          onClick={evt => {
+            setChecked(!checked);
+            departmentCheck(checked);
+          }}
+        >
+          {checked ? "renter" : "owner"}
+        </button>
+
         <button
           disabled={signupForm.isSubmitting}
           type="button"

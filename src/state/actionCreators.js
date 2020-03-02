@@ -25,10 +25,10 @@ export const onLogin = formValues => dispatch => {
     });
 };
 
-export const departmentCheck = (bool) => dispatch => {
-  const type = bool ? "owner" : "renter"; 
-  dispatch({ type: types.DEPARTMENT_CHECK, payload: type})
-}
+export const departmentCheck = bool => dispatch => {
+  const type = bool ? "owner" : "renter";
+  dispatch({ type: types.DEPARTMENT_CHECK, payload: type });
+};
 
 export const onSignup = formValues => dispatch => {
   dispatch({ type: types.SIGNUP_START });
@@ -36,7 +36,7 @@ export const onSignup = formValues => dispatch => {
     .post("https://usetechstuff.herokuapp.com/api/signup", formValues)
     .then(res => {
       dispatch({ type: types.SIGNUP });
-      useHistory().push("/login")
+      useHistory().push("/login");
     })
     .catch(err => {
       console.log(err);

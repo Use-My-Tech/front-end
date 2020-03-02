@@ -10,8 +10,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 
 const combinedReducer = combineReducers({
-    loginForm: loginFormReducer,
-    signupForm: signupFormReducer,
+  loginForm: loginFormReducer,
+  signupForm: signupFormReducer
 });
 
 const store = createStore(

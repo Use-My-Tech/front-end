@@ -8,4 +8,3 @@ export const SIGNUP = "SIGNUP";
 export const SIGNUP_START = "SIGNUP_START";
 export const SIGNUP_END = "SIGNUP_END";
 export const DEPARTMENT_CHECK = "DEPARTMENT_CHECK";
-

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 import axios from "../axiosWithAuth";
+import ItemCard from "./ItemCard";
 
 function RenterDashboard() {
   const [data, setData] = useState([]);
@@ -23,12 +24,7 @@ function RenterDashboard() {
       renter dashboard
       {data.map(item => {
         return (
-          <div key={item.id}>
-            <h3>{item.item_name} {item.daily_rate}$/day</h3>
-            <img src={item.imgs}/>
-            <h4>condition: {item.condition}</h4>
-        <p>address: {item.location} <br/> description: {item.description}</p>
-          </div>
+          <ItemCard key={item.id} item={item}/>
         );
       })}
     </div>

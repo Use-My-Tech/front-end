@@ -14,6 +14,7 @@ export const onLogin = (formValues, history) => dispatch => {
   axios
     .post("https://usetechstuff.herokuapp.com/api/login", formValues)
     .then(res => {
+      console.log(res.data.user.id)
       dispatch({ type: types.LOGIN });
       localStorage.setItem("token", res.data.token);
       history.push(`/${res.data.user.department}`);

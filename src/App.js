@@ -7,7 +7,8 @@ import Signup from "./Components/Signup";
 import Home from "./Components/Home";
 import OwnerDashboard from "./Components/OwnerDashboard";
 import RenterDashboard from "./Components/RenterDashboard";
-import "./App.css";
+import ItemById from "./Components/ItemById";
+import "./styles/App.css";
 
 function App() {
   return (
@@ -43,6 +44,9 @@ function App() {
       </PrivateRoute>
       <PrivateRoute path="/renter">
         <RenterDashboard />
+      </PrivateRoute>
+      <PrivateRoute exact path="/item/:id">
+        <ItemById />
       </PrivateRoute>
     </div>
   );

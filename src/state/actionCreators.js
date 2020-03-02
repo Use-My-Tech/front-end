@@ -1,6 +1,5 @@
 import * as types from "./actionTypes";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 
 export const changeHandler = e => dispatch => {
   dispatch({

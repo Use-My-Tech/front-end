@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, NavLink } from "react-router-dom";
+import { Route, NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "./state/actionCreators";
 import Login from "./Components/Login";
@@ -30,18 +30,23 @@ function App() {
       <Route path="/login">
         <Login />
       </Route>
-      <Route path="/owner">
-        
-      </Route>
-      <Route path="/renter">
+      <PrivateRoute path="/owner">
 
-      </Route>
+      </PrivateRoute>
+      <PrivateRoute path="/renter">
+
+      </PrivateRoute>
       
     </div>
   );
 }
 
-
+function PrivateRoute({children, ...rest}) {
+  const tokenExists = !!localStorage.getItem("token");
+  return (
+  <Route {...rest}>{tokenExists ? children : <Redirect to="/login" />}</Route>
+  )
+}
 
 function mapStateToProps(state) {
   return {

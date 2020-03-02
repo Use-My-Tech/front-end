@@ -25,6 +25,7 @@ function Signup({ signupForm, changeHandler, departmentCheck, onSignup }) {
           />
         </label>
         <label>
+          type: {checked ? "renter" : "owner"}
           <input
             type="checkbox"
             onClick={evt => {

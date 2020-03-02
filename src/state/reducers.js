@@ -31,7 +31,7 @@ export function loginFormReducer(state = initialLoginFormState, action) {
 const initialSignupFormState = {
   username: "",
   password: "",
-  department: "",
+  department: "owner",
   isSubmitting: false
 };
 

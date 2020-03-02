@@ -32,8 +32,9 @@ export const departmentCheck = bool => dispatch => {
 
 export const onSignup = formValues => dispatch => {
   dispatch({ type: types.SIGNUP_START });
+  delete formValues["isSubmitting"];
   axios
-    .post("https://usetechstuff.herokuapp.com/api/signup", formValues)
+    .post("https://usetechstuff.herokuapp.com/api/register", formValues)
     .then(res => {
       dispatch({ type: types.SIGNUP });
       useHistory().push("/login");

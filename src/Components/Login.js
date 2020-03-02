@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
-function Login({formValues, changeHandler, onLogin}) {
+function Login({loginForm, changeHandler, onLogin}) {
+
     return(
         <>
         <form>
@@ -11,7 +12,7 @@ function Login({formValues, changeHandler, onLogin}) {
           <input
             name="username"
             onChange={changeHandler}
-            value={formValues.username}
+            value={loginForm.username}
           />
         </label>
         <label>
@@ -19,10 +20,10 @@ function Login({formValues, changeHandler, onLogin}) {
           <input
             name="password"
             onChange={changeHandler}
-            value={formValues.password}
+            value={loginForm.password}
           />
         </label>
-        <button type="button" onClick={evt => onLogin(formValues)}>
+        <button disabled={loginForm.isSubmitting} type="button" onClick={evt => onLogin(loginForm)}>
           LOGIN
         </button>
       </form>
@@ -32,7 +33,7 @@ function Login({formValues, changeHandler, onLogin}) {
 
 function mapStateToProps(state) {
     return {
-      formValues: state.formValues
+      loginForm: state.loginForm
     };
   }
   

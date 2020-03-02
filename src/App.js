@@ -1,25 +1,42 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "./state/actionCreators";
 import Login from "./Components/Login";
+import Signup from "./Components/Signup";
+import Home from "./Components/Home";
 import "./App.css";
 
-function App({ formValues, changeHandler, onLogin }) {
-
+function App() {
   return (
     <div className="App">
+      <nav>
+        <NavLink exact to="/" activeClassName="active" replace>
+          home
+        </NavLink>
+        <NavLink exact to="/login" activeClassName="active" replace>
+          login
+        </NavLink>
+        <NavLink exact to="signup" activeClassName="active" replace>
+          sign up
+        </NavLink>
+      </nav>
       <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/login">
         <Login />
       </Route>
-      <Route path="/signup"></Route>
+      <Route path="/signup">
+        <Signup />
+      </Route>
     </div>
   );
 }
 
 function mapStateToProps(state) {
   return {
-    formValues: state.formValues
+    loginForm: state.loginForm
   };
 }
 

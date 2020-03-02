@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
-function Signup({formValues, changeHandler, onLogin}) {
+function Signup({signupForm, changeHandler, departmentCheck, onSignup}) {
+  const [checked, setChecked] = useState(false)
+  console.log(checked)
     return(
         <>
         <form>
@@ -11,7 +13,7 @@ function Signup({formValues, changeHandler, onLogin}) {
           <input
             name="username"
             onChange={changeHandler}
-            value={formValues.username}
+            value={signupForm.username}
           />
         </label>
         <label>
@@ -19,10 +21,13 @@ function Signup({formValues, changeHandler, onLogin}) {
           <input
             name="password"
             onChange={changeHandler}
-            value={formValues.password}
+            value={signupForm.password}
           />
         </label>
-        <button type="button" onClick={evt => onLogin(formValues)}>
+        <label>
+          <input type="checkbox" onClick={evt => {setChecked(!checked); departmentCheck(checked)}} />
+        </label>
+        <button type="button" onClick={evt => onSignup(signupForm)}>
           SIGN UP
         </button>
       </form>
@@ -32,7 +37,7 @@ function Signup({formValues, changeHandler, onLogin}) {
 
 function mapStateToProps(state) {
     return {
-      formValues: state.formValues
+      signupForm: state.signupForm
     };
   }
   

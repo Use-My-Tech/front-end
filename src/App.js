@@ -5,6 +5,8 @@ import * as actionCreators from "./state/actionCreators";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import Home from "./Components/Home";
+import OwnerDashboard from "./Components/OwnerDashboard";
+import RenterDashboard from "./Components/RenterDashboard";
 import "./App.css";
 
 function App() {
@@ -20,6 +22,12 @@ function App() {
         <NavLink exact to="signup" activeClassName="active" replace>
           sign up
         </NavLink>
+        <NavLink exact to="owner" activeClassName="active" replace>
+          owner
+        </NavLink>
+        <NavLink exact to="renter" activeClassName="active" replace>
+          renter
+        </NavLink>
       </nav>
       <Route exact path="/">
         <Home />
@@ -31,21 +39,20 @@ function App() {
         <Login />
       </Route>
       <PrivateRoute path="/owner">
-
+        <OwnerDashboard />
       </PrivateRoute>
       <PrivateRoute path="/renter">
-
+        <RenterDashboard />
       </PrivateRoute>
-      
     </div>
   );
 }
 
-function PrivateRoute({children, ...rest}) {
+function PrivateRoute({ children, ...rest }) {
   const tokenExists = !!localStorage.getItem("token");
   return (
-  <Route {...rest}>{tokenExists ? children : <Redirect to="/login" />}</Route>
-  )
+    <Route {...rest}>{tokenExists ? children : <Redirect to="/login" />}</Route>
+  );
 }
 
 function mapStateToProps(state) {

@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
+import { useHistory } from "react-router-dom";
 
 function Login({ loginForm, changeHandler, onLogin }) {
-  
+  const history = useHistory();
   return (
     <>
       <form>
@@ -26,7 +27,7 @@ function Login({ loginForm, changeHandler, onLogin }) {
         <button
           disabled={loginForm.isSubmitting}
           type="button"
-          onClick={evt => onLogin(loginForm)}
+          onClick={evt => onLogin(loginForm, history)}
         >
           LOGIN
         </button>

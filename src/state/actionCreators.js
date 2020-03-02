@@ -9,13 +9,41 @@ export const changeHandler = e => dispatch => {
 };
 
 export const onLogin = formValues => dispatch => {
+  dispatch({ type: types.LOGIN_START });
   axios
     .post("https://usetechstuff.herokuapp.com/api/login", formValues)
     .then(res => {
+      console.log(res.data.user.department)
       dispatch({ type: types.LOGIN });
       localStorage.setItem("token", res.data.token);
+      
     })
     .catch(err => {
       console.log(err);
+    })
+    .finally(() => {
+      dispatch({ type: types.LOGIN_END });
+    });
+};
+
+export const departmentCheck = bool => dispatch => {
+  const type = bool ? "owner" : "renter";
+  dispatch({ type: types.DEPARTMENT_CHECK, payload: type });
+};
+
+export const onSignup = formValues => dispatch => {
+  dispatch({ type: types.SIGNUP_START });
+  delete formValues["isSubmitting"];
+  axios
+    .post("https://usetechstuff.herokuapp.com/api/register", formValues)
+    .then(res => {
+      dispatch({ type: types.SIGNUP });
+      
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    .finally(() => {
+      dispatch({ type: types.SIGNUP_END });
     });
 };

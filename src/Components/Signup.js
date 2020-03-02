@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
-function Signup({formValues, changeHandler, onLogin}) {
-    return(
-        <>
-        <form>
+function Signup({ signupForm, changeHandler, departmentCheck, onSignup }) {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <>
+      <form>
         <label>
           username:
           <input
             name="username"
             onChange={changeHandler}
-            value={formValues.username}
+            value={signupForm.username}
           />
         </label>
         <label>
@@ -19,22 +21,36 @@ function Signup({formValues, changeHandler, onLogin}) {
           <input
             name="password"
             onChange={changeHandler}
-            value={formValues.password}
+            value={signupForm.password}
           />
         </label>
-        <button type="button" onClick={evt => onLogin(formValues)}>
+        <label>type: </label>
+        <button
+          type="button"
+          onClick={evt => {
+            setChecked(!checked);
+            departmentCheck(checked);
+          }}
+        >
+          {checked ? "renter" : "owner"}
+        </button>
+
+        <button
+          disabled={signupForm.isSubmitting}
+          type="button"
+          onClick={evt => onSignup(signupForm)}
+        >
           SIGN UP
         </button>
       </form>
-        </>
-    )
+    </>
+  );
 }
 
 function mapStateToProps(state) {
-    return {
-      formValues: state.formValues
-    };
-  }
-  
-  export default connect(mapStateToProps, actionCreators)(Signup);
-  
+  return {
+    signupForm: state.signupForm
+  };
+}
+
+export default connect(mapStateToProps, actionCreators)(Signup);

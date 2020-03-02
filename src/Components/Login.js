@@ -2,16 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
-function Login({formValues, changeHandler, onLogin}) {
-    return(
-        <>
-        <form>
+function Login({ loginForm, changeHandler, onLogin }) {
+  
+  return (
+    <>
+      <form>
         <label>
           username:
           <input
             name="username"
             onChange={changeHandler}
-            value={formValues.username}
+            value={loginForm.username}
           />
         </label>
         <label>
@@ -19,22 +20,25 @@ function Login({formValues, changeHandler, onLogin}) {
           <input
             name="password"
             onChange={changeHandler}
-            value={formValues.password}
+            value={loginForm.password}
           />
         </label>
-        <button type="button" onClick={evt => onLogin(formValues)}>
+        <button
+          disabled={loginForm.isSubmitting}
+          type="button"
+          onClick={evt => onLogin(loginForm)}
+        >
           LOGIN
         </button>
       </form>
-        </>
-    )
+    </>
+  );
 }
 
 function mapStateToProps(state) {
-    return {
-      formValues: state.formValues
-    };
-  }
-  
-  export default connect(mapStateToProps, actionCreators)(Login);
-  
+  return {
+    loginForm: state.loginForm
+  };
+}
+
+export default connect(mapStateToProps, actionCreators)(Login);

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
+import { useHistory } from "react-router-dom";
 
 function Signup({ signupForm, changeHandler, departmentCheck, onSignup }) {
   const [checked, setChecked] = useState(false);
-
+  const history = useHistory()
   return (
     <>
       <form>
@@ -38,7 +39,7 @@ function Signup({ signupForm, changeHandler, departmentCheck, onSignup }) {
         <button
           disabled={signupForm.isSubmitting}
           type="button"
-          onClick={evt => onSignup(signupForm)}
+          onClick={evt => onSignup(signupForm, history)}
         >
           SIGN UP
         </button>

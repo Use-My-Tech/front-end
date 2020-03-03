@@ -5,12 +5,10 @@ import axios from "../axiosWithAuth";
 import ItemCard from "./ItemCard";
 
 function OwnerDashboard({ addForm, changeHandler, onAdd }) {
-  
   const [data, setData] = useState([]);
   const id = localStorage.getItem("user");
 
   useEffect(() => {
-    
     axios()
       .get("https://usetechstuff.herokuapp.com/api/items")
       .then(res => {
@@ -61,7 +59,6 @@ function OwnerDashboard({ addForm, changeHandler, onAdd }) {
         <button type="button" onClick={evt => onAdd(addForm, id)}>
           submit
         </button>
-        
       </form>
       {data.map(item => {
         return <ItemCard key={item.id} item={item} />;

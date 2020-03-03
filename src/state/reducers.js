@@ -3,7 +3,7 @@ import * as types from "./actionTypes";
 const initialLoginFormState = {
   username: "",
   password: "",
-  isSubmitting: false,
+  isSubmitting: false
 };
 
 export function loginFormReducer(state = initialLoginFormState, action) {
@@ -67,10 +67,10 @@ const initialAddFormState = {
   description: "",
   availability: 1,
   daily_rate: "",
-  condition: "",  
+  condition: "",
   location: "",
   imgs: ""
-}
+};
 
 export function addFormReducer(state = initialAddFormState, action) {
   switch (action.type) {

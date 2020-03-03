@@ -1,7 +1,6 @@
 import * as types from "./actionTypes";
 import axios from "../axiosWithAuth";
 
-
 export const changeHandler = e => dispatch => {
   dispatch({
     type: types.INPUT_CHANGE,
@@ -14,9 +13,9 @@ export const onLogin = (formValues, history) => dispatch => {
   axios()
     .post("https://usetechstuff.herokuapp.com/api/login", formValues)
     .then(res => {
-      dispatch({ type: types.LOGIN});
+      dispatch({ type: types.LOGIN });
       localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", res.data.user.id)
+      localStorage.setItem("user", res.data.user.id);
       history.push(`/${res.data.user.department}`);
     })
     .catch(err => {
@@ -51,12 +50,15 @@ export const onSignup = (formValues, history) => dispatch => {
 
 export const onAdd = (formValues, id) => dispatch => {
   axios()
-  .post(`https://usetechstuff.herokuapp.com/api/users/${id}/items`, formValues)
-  .then(res => {
-    console.log(res)
-  })
-  .catch(err => {
-    console.log(err)
-  })
-  dispatch({type: types.ADD_ITEM})
-}
+    .post(
+      `https://usetechstuff.herokuapp.com/api/users/${id}/items`,
+      formValues
+    )
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  dispatch({ type: types.ADD_ITEM });
+};

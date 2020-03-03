@@ -11,7 +11,6 @@ function RenterDashboard() {
     axios()
       .get("https://usetechstuff.herokuapp.com/api/items")
       .then(res => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch(err => {

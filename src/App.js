@@ -11,19 +11,17 @@ import ItemById from "./Components/ItemById";
 import OwnerItems from "./Components/OwnerItems";
 import "./styles/App.css";
 
-function App({logout}) {
-
+function App({ logout }) {
   const history = useHistory();
 
   return (
     <div className="App">
       <nav>
-        <NavLink exact to="/" activeClassName="active" replace>
-          home
-        </NavLink>
-
         {!localStorage.getItem("token") && (
           <>
+            <NavLink exact to="/" activeClassName="active" replace>
+              home
+            </NavLink>
             <NavLink exact to="/login" activeClassName="active" replace>
               login
             </NavLink>
@@ -46,7 +44,9 @@ function App({logout}) {
         )}
 
         {!!localStorage.getItem("token") && (
-          <button type="button" onClick={evt => logout(history)}>logout</button>
+          <button type="button" onClick={evt => logout(history)}>
+            logout
+          </button>
         )}
       </nav>
 

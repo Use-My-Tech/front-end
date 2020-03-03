@@ -12,7 +12,6 @@ export default function ItemById() {
         axios()
         .get(`https://usetechstuff.herokuapp.com/api/item/${id}`)
         .then(res => {
-            console.log(res)
             setItem(res.data)
         })
         .catch(err => {

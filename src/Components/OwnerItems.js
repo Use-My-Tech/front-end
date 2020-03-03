@@ -11,7 +11,6 @@ function OwnerItems() {
     axios()
       .get(`https://usetechstuff.herokuapp.com/api/users/${id}/items`)
       .then(res => {
-        console.log(res);
         setData(res.data)
       })
       .catch(err => {

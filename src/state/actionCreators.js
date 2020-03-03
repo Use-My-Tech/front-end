@@ -57,7 +57,6 @@ export const onAdd = (formValues, id) => dispatch => {
     )
     .then(res => {
       dispatch({ type: types.ADD_ITEM });
-      console.log(res);
     })
     .catch(err => {
       console.log(err);
@@ -69,7 +68,7 @@ export const deleteItem = (id) => dispatch => {
   axios()
   .delete(`https://usetechstuff.herokuapp.com/api/item/${id}`)
   .then(res => {
-    console.log(res)
+    // dispatch({type: types.DELETE_})
   })
   .catch(err => {
     console.log(err)

@@ -92,6 +92,8 @@ export function dataReducer(state = initialDataState, action) {
   switch (action.type) {
     case types.FETCH:
       return action.payload;
+    case types.DELETE_ITEM:
+      return state.filter(item => item.id !== action.payload);
     default:
       return state;
   }

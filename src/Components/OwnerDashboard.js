@@ -4,11 +4,11 @@ import * as actionCreators from "../state/actionCreators";
 import axios from "../axiosWithAuth";
 import ItemCard from "./ItemCard";
 
-function OwnerDashboard({ addForm, changeHandler, data, fetchAllItems, onAdd }) {
+function OwnerDashboard({ addForm, changeHandler, data, fetch, onAdd }) {
   const id = localStorage.getItem("user");
 
   useEffect(() => {
-    fetchAllItems()
+    fetch("https://usetechstuff.herokuapp.com/api/items")
   }, []);
 
   return (

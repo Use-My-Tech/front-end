@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
-import axios from "../axiosWithAuth";
 import ItemCard from "./ItemCard";
 
-function RenterDashboard({data, fetchAllItems}) {
+function RenterDashboard({data, fetch}) {
 
   useEffect(() => {
-    fetchAllItems()
+    fetch("https://usetechstuff.herokuapp.com/api/items")
   }, []);
 
   return (

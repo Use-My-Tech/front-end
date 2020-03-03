@@ -49,9 +49,9 @@ export const onSignup = (formValues, history) => dispatch => {
     });
 };
 
-export const fetchAllItems = () => dispatch => {
+export const fetch = (url) => dispatch => {
   axios()
-      .get("https://usetechstuff.herokuapp.com/api/items")
+      .get(url)
       .then(res => {
         dispatch({type: types.FETCH, payload: res.data});
       })
@@ -78,7 +78,7 @@ export const deleteItem = id => dispatch => {
   axios()
     .delete(`https://usetechstuff.herokuapp.com/api/item/${id}`)
     .then(res => {
-      // dispatch({type: types.DELETE_})
+      dispatch({type: types.DELETE_ITEM, payload: id})
     })
     .catch(err => {
       console.log(err);

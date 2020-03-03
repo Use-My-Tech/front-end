@@ -55,10 +55,22 @@ export const onAdd = (formValues, id) => dispatch => {
       formValues
     )
     .then(res => {
+      dispatch({ type: types.ADD_ITEM });
       console.log(res);
     })
     .catch(err => {
       console.log(err);
     });
-  dispatch({ type: types.ADD_ITEM });
+  
 };
+
+export const deleteItem = (id) => dispatch => {
+  axios()
+  .delete(`https://usetechstuff.herokuapp.com/api/item/${id}`)
+  .then(res => {
+    console.log(res)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}

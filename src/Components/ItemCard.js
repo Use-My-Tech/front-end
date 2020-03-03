@@ -21,16 +21,14 @@ function ItemCard({ item, deleteItem }) {
         address: {item.location} <br /> description: {item.description}
       </p>
       {id === item.user_id ? (
-        <button onClick={deleteItem}>delete</button>
+        <button onClick={evt => deleteItem(item.id)}>delete</button>
       ) : null}
     </>
   );
 }
 
 function mapStateToProps(state) {
-  return {
-    addForm: state.addForm
-  };
+  return { };
 }
 
 export default connect(mapStateToProps, actionCreators)(ItemCard);

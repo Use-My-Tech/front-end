@@ -14,6 +14,7 @@ export const onLogin = (formValues, history) => dispatch => {
     .post("https://usetechstuff.herokuapp.com/api/login", formValues)
     .then(res => {
       dispatch({ type: types.LOGIN });
+      localStorage.setItem("type", res.data.user.department);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", res.data.user.id);
       history.push(`/${res.data.user.department}`);
@@ -73,4 +74,11 @@ export const deleteItem = (id) => dispatch => {
   .catch(err => {
     console.log(err)
   })
+}
+
+export const logout = (history) => dispatch => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  localStorage.removeItem("type");
+  history.push("/login")
 }

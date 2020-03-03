@@ -80,7 +80,7 @@ export function addFormReducer(state = initialAddFormState, action) {
         [action.payload[0]]: action.payload[1]
       };
     case types.ADD_ITEM:
-      return state;
+      return initialAddFormState;
     default:
       return state;
   }
@@ -94,6 +94,8 @@ export function dataReducer(state = initialDataState, action) {
       return action.payload;
     case types.DELETE_ITEM:
       return state.filter(item => item.id !== action.payload);
+    case types.ADD_ITEM:
+      return state.concat(action.payload);
     default:
       return state;
   }

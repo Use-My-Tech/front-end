@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
-import axios from "../axiosWithAuth";
 import ItemCard from "./ItemCard";
 
 function OwnerItems({data, fetch}) {

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
-import axios from "../axiosWithAuth";
 import ItemCard from "./ItemCard";
 
 function OwnerDashboard({ addForm, changeHandler, data, fetch, onAdd }) {

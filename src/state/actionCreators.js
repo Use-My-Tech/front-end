@@ -60,14 +60,15 @@ export const fetch = (url) => dispatch => {
       });
 }
 
-export const onAdd = (formValues, id) => dispatch => {
+export const onAdd = (formValues, userID) => dispatch => {
   axios()
     .post(
-      `https://usetechstuff.herokuapp.com/api/users/${id}/items`,
+      `https://usetechstuff.herokuapp.com/api/users/${userID}/items`,
       formValues
     )
     .then(res => {
-      dispatch({ type: types.ADD_ITEM });
+      formValues.user_id = userID;
+      dispatch({ type: types.ADD_ITEM, payload: formValues });
     })
     .catch(err => {
       console.log(err);

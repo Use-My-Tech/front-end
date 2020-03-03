@@ -49,6 +49,17 @@ export const onSignup = (formValues, history) => dispatch => {
     });
 };
 
+export const fetchAllItems = () => dispatch => {
+  axios()
+      .get("https://usetechstuff.herokuapp.com/api/items")
+      .then(res => {
+        dispatch({type: types.FETCH, payload: res.data});
+      })
+      .catch(err => {
+        console.log(err);
+      });
+}
+
 export const onAdd = (formValues, id) => dispatch => {
   axios()
     .post(
@@ -61,23 +72,22 @@ export const onAdd = (formValues, id) => dispatch => {
     .catch(err => {
       console.log(err);
     });
-  
 };
 
-export const deleteItem = (id) => dispatch => {
+export const deleteItem = id => dispatch => {
   axios()
-  .delete(`https://usetechstuff.herokuapp.com/api/item/${id}`)
-  .then(res => {
-    // dispatch({type: types.DELETE_})
-  })
-  .catch(err => {
-    console.log(err)
-  })
-}
+    .delete(`https://usetechstuff.herokuapp.com/api/item/${id}`)
+    .then(res => {
+      // dispatch({type: types.DELETE_})
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
-export const logout = (history) => dispatch => {
+export const logout = history => dispatch => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
   localStorage.removeItem("type");
-  history.push("/login")
-}
+  history.push("/login");
+};

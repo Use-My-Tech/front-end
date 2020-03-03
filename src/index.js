@@ -8,7 +8,8 @@ import { Provider } from "react-redux";
 import {
   loginFormReducer,
   signupFormReducer,
-  addFormReducer
+  addFormReducer,
+  dataReducer
 } from "./state/reducers";
 import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
@@ -16,7 +17,8 @@ import * as serviceWorker from "./serviceWorker";
 const combinedReducer = combineReducers({
   loginForm: loginFormReducer,
   signupForm: signupFormReducer,
-  addForm: addFormReducer
+  addForm: addFormReducer,
+  data: dataReducer
 });
 
 const store = createStore(

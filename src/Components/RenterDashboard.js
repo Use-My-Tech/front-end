@@ -4,18 +4,10 @@ import * as actionCreators from "../state/actionCreators";
 import axios from "../axiosWithAuth";
 import ItemCard from "./ItemCard";
 
-function RenterDashboard() {
-  const [data, setData] = useState([]);
+function RenterDashboard({data, fetchAllItems}) {
 
   useEffect(() => {
-    axios()
-      .get("https://usetechstuff.herokuapp.com/api/items")
-      .then(res => {
-        setData(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    fetchAllItems()
   }, []);
 
   return (
@@ -31,7 +23,9 @@ function RenterDashboard() {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    data: state.data
+  };
 }
 
 export default connect(mapStateToProps, actionCreators)(RenterDashboard);

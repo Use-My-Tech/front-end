@@ -4,19 +4,11 @@ import * as actionCreators from "../state/actionCreators";
 import axios from "../axiosWithAuth";
 import ItemCard from "./ItemCard";
 
-function OwnerDashboard({ addForm, changeHandler, onAdd }) {
-  const [data, setData] = useState([]);
+function OwnerDashboard({ addForm, changeHandler, data, fetchAllItems, onAdd }) {
   const id = localStorage.getItem("user");
 
   useEffect(() => {
-    axios()
-      .get("https://usetechstuff.herokuapp.com/api/items")
-      .then(res => {
-        setData(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    fetchAllItems()
   }, []);
 
   return (
@@ -69,7 +61,8 @@ function OwnerDashboard({ addForm, changeHandler, onAdd }) {
 
 function mapStateToProps(state) {
   return {
-    addForm: state.addForm
+    addForm: state.addForm,
+    data: state.data
   };
 }
 

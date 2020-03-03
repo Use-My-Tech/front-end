@@ -85,3 +85,14 @@ export function addFormReducer(state = initialAddFormState, action) {
       return state;
   }
 }
+
+const initialDataState = []
+
+export function dataReducer(state = initialDataState, action) {
+  switch (action.type) {
+    case types.FETCH:
+      return action.payload;
+    default:
+      return state;
+  }
+}

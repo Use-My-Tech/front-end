@@ -3,7 +3,7 @@ import * as types from "./actionTypes";
 const initialLoginFormState = {
   username: "",
   password: "",
-  isSubmitting: false
+  isSubmitting: false,
 };
 
 export function loginFormReducer(state = initialLoginFormState, action) {
@@ -57,6 +57,30 @@ export function signupFormReducer(state = initialSignupFormState, action) {
         ...state,
         isSubmitting: false
       };
+    default:
+      return state;
+  }
+}
+
+const initialAddFormState = {
+  item_name: "",
+  description: "",
+  availability: 1,
+  daily_rate: "",
+  condition: "",  
+  location: "",
+  imgs: ""
+}
+
+export function addFormReducer(state = initialAddFormState, action) {
+  switch (action.type) {
+    case types.INPUT_CHANGE:
+      return {
+        ...state,
+        [action.payload[0]]: action.payload[1]
+      };
+    case types.ADD_ITEM:
+      return state;
     default:
       return state;
   }

@@ -42,10 +42,10 @@ function App() {
       <PrivateRoute path="/owner">
         <OwnerDashboard />
       </PrivateRoute>
-      <PrivateRoute path="/renter">
+      <PrivateRoute path="/renter" >
         <RenterDashboard />
       </PrivateRoute>
-      <PrivateRoute exact path="/item/:id">
+      <PrivateRoute path="/item:id">
         <ItemById />
       </PrivateRoute>
     </div>

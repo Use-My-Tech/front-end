@@ -5,13 +5,14 @@ import App from "./App";
 import thunk from "redux-thunk";
 import { combineReducers, createStore, compose, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import { loginFormReducer, signupFormReducer } from "./state/reducers";
+import { loginFormReducer, signupFormReducer, addFormReducer } from "./state/reducers";
 import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 
 const combinedReducer = combineReducers({
   loginForm: loginFormReducer,
-  signupForm: signupFormReducer
+  signupForm: signupFormReducer,
+  addForm: addFormReducer,
 });
 
 const store = createStore(

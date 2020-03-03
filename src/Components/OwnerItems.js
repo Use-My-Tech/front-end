@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 import axios from "../axiosWithAuth";
 import ItemCard from "./ItemCard";
 
-function RenterDashboard() {
-  const [data, setData] = useState([]);
-
+function OwnerItems() {
+    const [data, setData] = useState([])
+    const id = localStorage.getItem("user")
   useEffect(() => {
     axios()
-      .get("https://usetechstuff.herokuapp.com/api/items")
+      .get(`https://usetechstuff.herokuapp.com/api/users/${id}/items`)
       .then(res => {
-        setData(res.data);
+        setData(res.data)
       })
       .catch(err => {
         console.log(err);
@@ -19,14 +19,11 @@ function RenterDashboard() {
   }, []);
 
   return (
-    <div>
-      renter dashboard
+    <>
       {data.map(item => {
-        return (
-          <ItemCard key={item.id} item={item}/>
-        );
+        return <ItemCard key={item.id} item={item} />;
       })}
-    </div>
+    </>
   );
 }
 
@@ -34,4 +31,4 @@ function mapStateToProps(state) {
   return {};
 }
 
-export default connect(mapStateToProps, actionCreators)(RenterDashboard);
+export default connect(mapStateToProps, actionCreators)(OwnerItems);

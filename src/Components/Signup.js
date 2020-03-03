@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 function Signup({ signupForm, changeHandler, departmentCheck, onSignup }) {
   const [checked, setChecked] = useState(false);
-  const history = useHistory()
+  const history = useHistory();
   return (
     <>
       <form>

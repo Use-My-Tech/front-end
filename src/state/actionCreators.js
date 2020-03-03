@@ -1,6 +1,5 @@
 import * as types from "./actionTypes";
-import axios from "axios";
-
+import axios from "../axiosWithAuth";
 
 export const changeHandler = e => dispatch => {
   dispatch({
@@ -11,11 +10,13 @@ export const changeHandler = e => dispatch => {
 
 export const onLogin = (formValues, history) => dispatch => {
   dispatch({ type: types.LOGIN_START });
-  axios
+  axios()
     .post("https://usetechstuff.herokuapp.com/api/login", formValues)
     .then(res => {
       dispatch({ type: types.LOGIN });
+      localStorage.setItem("type", res.data.user.department);
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", res.data.user.id);
       history.push(`/${res.data.user.department}`);
     })
     .catch(err => {
@@ -34,7 +35,7 @@ export const departmentCheck = bool => dispatch => {
 export const onSignup = (formValues, history) => dispatch => {
   dispatch({ type: types.SIGNUP_START });
   delete formValues["isSubmitting"];
-  axios
+  axios()
     .post("https://usetechstuff.herokuapp.com/api/register", formValues)
     .then(res => {
       dispatch({ type: types.SIGNUP });
@@ -47,3 +48,36 @@ export const onSignup = (formValues, history) => dispatch => {
       dispatch({ type: types.SIGNUP_END });
     });
 };
+
+export const onAdd = (formValues, id) => dispatch => {
+  axios()
+    .post(
+      `https://usetechstuff.herokuapp.com/api/users/${id}/items`,
+      formValues
+    )
+    .then(res => {
+      dispatch({ type: types.ADD_ITEM });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  
+};
+
+export const deleteItem = (id) => dispatch => {
+  axios()
+  .delete(`https://usetechstuff.herokuapp.com/api/item/${id}`)
+  .then(res => {
+    // dispatch({type: types.DELETE_})
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
+
+export const logout = (history) => dispatch => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  localStorage.removeItem("type");
+  history.push("/login")
+}

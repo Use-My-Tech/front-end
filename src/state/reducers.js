@@ -61,3 +61,27 @@ export function signupFormReducer(state = initialSignupFormState, action) {
       return state;
   }
 }
+
+const initialAddFormState = {
+  item_name: "",
+  description: "",
+  availability: 1,
+  daily_rate: "",
+  condition: "",
+  location: "",
+  imgs: ""
+};
+
+export function addFormReducer(state = initialAddFormState, action) {
+  switch (action.type) {
+    case types.INPUT_CHANGE:
+      return {
+        ...state,
+        [action.payload[0]]: action.payload[1]
+      };
+    case types.ADD_ITEM:
+      return state;
+    default:
+      return state;
+  }
+}

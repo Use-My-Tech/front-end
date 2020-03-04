@@ -1,28 +1,32 @@
+//dependencies
 import React from "react";
 import { Route, NavLink, Redirect, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionCreators from "./state/actionCreators";
+
+//components
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import OwnerDashboard from "./Components/OwnerDashboard";
 import RenterDashboard from "./Components/RenterDashboard";
 import ItemById from "./Components/ItemById";
 import OwnerItems from "./Components/OwnerItems";
-import "./styles/App.css";
+import RenterCart from "./Components/RenterCart";
 
-const type = localStorage.getItem("type");
+//styles
+import "./styles/App.css";
+import { Button, Nav } from "./styles/styled";
 
 function App({ logout }) {
   const history = useHistory();
+  const type = localStorage.getItem("type");
+
 
   return (
     <div className="App">
-      <nav>
+      <Nav>
         {!localStorage.getItem("token") && (
           <>
-            <NavLink exact to="/" activeClassName="active" replace>
-              home
-            </NavLink>
             <NavLink exact to="/login" activeClassName="active" replace>
               login
             </NavLink>
@@ -55,14 +59,14 @@ function App({ logout }) {
         )}
 
         {!!localStorage.getItem("token") && (
-          <button type="button" onClick={evt => logout(history)}>
+          <Button type="button" onClick={evt => logout(history)}>
             logout
-          </button>
+          </Button>
         )}
-      </nav>
+      </Nav>
 
       <Redirect exact path="/" to="/login"/>
-
+          
       <UnloggedRoute path="/signup">
         <Signup />
       </UnloggedRoute>
@@ -79,19 +83,25 @@ function App({ logout }) {
         <OwnerItems />
       </PrivateRouteOwner>
 
-      <PrivateRouteRenter path="/renter">
+      <PrivateRouteRenter exact path="/renter">
         <RenterDashboard />
+      </PrivateRouteRenter>
+
+      <PrivateRouteRenter path="/renter/cart">
+        <RenterCart />
       </PrivateRouteRenter>
 
       <LoggedRoute path="/item:id">
         <ItemById />
       </LoggedRoute>
+      
     </div>
   );
 }
 
 function UnloggedRoute({ children, ...rest }) {
   const tokenExists = !!localStorage.getItem("token");
+  const type = localStorage.getItem("type");
   return (
     <Route {...rest}>
       {!tokenExists ? children : <Redirect to={`/${type}`} />}

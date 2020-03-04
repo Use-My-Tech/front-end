@@ -4,6 +4,8 @@ import axios from "../axiosWithAuth";
 
 import ItemCard from "./ItemCard";
 
+import { CardContainer } from "../styles/styled";
+
 export default function ItemById() {
     const [item, setItem] = useState({})
     const { id } = useParams();
@@ -20,6 +22,8 @@ export default function ItemById() {
     }, [])
 
     return(
-        <ItemCard key={item.id} item={item}/>
+        <CardContainer>
+            <ItemCard key={item.id} item={item}/>
+        </CardContainer>
     )
 }

@@ -1,3 +1,23 @@
 .App {
   text-align: center;
+  background: turquoise;
+  height: 110vh;
+}
+
+a {
+  text-decoration: none;
+  padding: 0 15px;
+  color: #d8d8d8;
+}
+
+a:hover {
+  color: #afafaf
+}
+
+#form-button {
+  margin-top: 10px;
+}
+
+.active {
+  color: #afafaf
 }

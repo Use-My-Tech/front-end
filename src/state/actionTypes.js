@@ -10,3 +10,7 @@ export const SIGNUP_END = "SIGNUP_END";
 export const DEPARTMENT_CHECK = "DEPARTMENT_CHECK";
 //owner
 export const ADD_ITEM = "ADD_ITEM";
+export const DELETE_ITEM = "DELETE_ITEM";
+//data
+export const FETCH ="FETCH";
+

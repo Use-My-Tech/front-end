@@ -1,21 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
-import axios from "../axiosWithAuth";
 import ItemCard from "./ItemCard";
 
-function RenterDashboard() {
-  const [data, setData] = useState([]);
+function RenterDashboard({data, fetch}) {
 
   useEffect(() => {
-    axios()
-      .get("https://usetechstuff.herokuapp.com/api/items")
-      .then(res => {
-        setData(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    fetch("https://usetechstuff.herokuapp.com/api/items")
   }, []);
 
   return (
@@ -31,7 +22,9 @@ function RenterDashboard() {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    data: state.data
+  };
 }
 
 export default connect(mapStateToProps, actionCreators)(RenterDashboard);

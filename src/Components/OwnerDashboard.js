@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
-import axios from "../axiosWithAuth";
 import ItemCard from "./ItemCard";
 
-function OwnerDashboard({ addForm, changeHandler, onAdd }) {
-  const [data, setData] = useState([]);
+function OwnerDashboard({ addForm, changeHandler, data, fetch, onAdd }) {
   const id = localStorage.getItem("user");
 
   useEffect(() => {
-    axios()
-      .get("https://usetechstuff.herokuapp.com/api/items")
-      .then(res => {
-        setData(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    fetch("https://usetechstuff.herokuapp.com/api/items")
   }, []);
 
   return (
@@ -69,7 +60,8 @@ function OwnerDashboard({ addForm, changeHandler, onAdd }) {
 
 function mapStateToProps(state) {
   return {
-    addForm: state.addForm
+    addForm: state.addForm,
+    data: state.data
   };
 }
 

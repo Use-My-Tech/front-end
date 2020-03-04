@@ -80,7 +80,22 @@ export function addFormReducer(state = initialAddFormState, action) {
         [action.payload[0]]: action.payload[1]
       };
     case types.ADD_ITEM:
+      return initialAddFormState;
+    default:
       return state;
+  }
+}
+
+const initialDataState = []
+
+export function dataReducer(state = initialDataState, action) {
+  switch (action.type) {
+    case types.FETCH:
+      return action.payload;
+    case types.DELETE_ITEM:
+      return state.filter(item => item.id !== action.payload);
+    case types.ADD_ITEM:
+      return state.concat(action.payload);
     default:
       return state;
   }

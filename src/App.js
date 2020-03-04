@@ -4,12 +4,13 @@ import { connect } from "react-redux";
 import * as actionCreators from "./state/actionCreators";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
-import Home from "./Components/Home";
 import OwnerDashboard from "./Components/OwnerDashboard";
 import RenterDashboard from "./Components/RenterDashboard";
 import ItemById from "./Components/ItemById";
 import OwnerItems from "./Components/OwnerItems";
 import "./styles/App.css";
+
+const type = localStorage.getItem("type");
 
 function App({ logout }) {
   const history = useHistory();
@@ -31,16 +32,26 @@ function App({ logout }) {
           </>
         )}
 
-        {localStorage.getItem("type") === "owner" && (
-          <NavLink exact to="/owner" activeClassName="active" replace>
-            owner
-          </NavLink>
+        {type === "owner" && (
+          <>
+            <NavLink exact to="/owner" activeClassName="active" replace>
+              all items
+            </NavLink>
+            <NavLink exact to="/owner/items" activeClassName="active" replace>
+              your items
+            </NavLink>
+          </>
         )}
 
-        {localStorage.getItem("type") === "renter" && (
-          <NavLink exact to="/renter" activeClassName="active" replace>
-            renter
-          </NavLink>
+        {type === "renter" && (
+          <>
+            <NavLink exact to="/renter" activeClassName="active" replace>
+              rent
+            </NavLink>
+            <NavLink exact to="/renter/cart" activeClassName="active" replace>
+              cart
+            </NavLink>
+          </>
         )}
 
         {!!localStorage.getItem("token") && (
@@ -50,41 +61,68 @@ function App({ logout }) {
         )}
       </nav>
 
-      <Route exact path="/">
-        <Home />
-      </Route>
+      <Redirect exact path="/" to="/login"/>
 
-      <Route path="/signup">
+      <UnloggedRoute path="/signup">
         <Signup />
-      </Route>
+      </UnloggedRoute>
 
-      <Route path="/login">
+      <UnloggedRoute path="/login">
         <Login />
-      </Route>
+      </UnloggedRoute>
 
-      <PrivateRoute exact path="/owner">
+      <PrivateRouteOwner exact path="/owner">
         <OwnerDashboard />
-      </PrivateRoute>
+      </PrivateRouteOwner>
 
-      <PrivateRoute path="/owner/items">
+      <PrivateRouteOwner path="/owner/items">
         <OwnerItems />
-      </PrivateRoute>
+      </PrivateRouteOwner>
 
-      <PrivateRoute path="/renter">
+      <PrivateRouteRenter path="/renter">
         <RenterDashboard />
-      </PrivateRoute>
+      </PrivateRouteRenter>
 
-      <PrivateRoute path="/item:id">
+      <LoggedRoute path="/item:id">
         <ItemById />
-      </PrivateRoute>
+      </LoggedRoute>
     </div>
   );
 }
 
-function PrivateRoute({ children, ...rest }) {
+function UnloggedRoute({ children, ...rest }) {
+  const tokenExists = !!localStorage.getItem("token");
+  return (
+    <Route {...rest}>
+      {!tokenExists ? children : <Redirect to={`/${type}`} />}
+    </Route>
+  );
+}
+
+function LoggedRoute({ children, ...rest }) {
   const tokenExists = !!localStorage.getItem("token");
   return (
     <Route {...rest}>{tokenExists ? children : <Redirect to="/login" />}</Route>
+  );
+}
+
+function PrivateRouteRenter({ children, ...rest }) {
+  const tokenExists = !!localStorage.getItem("token");
+  const isRenter = localStorage.getItem("type") === "renter";
+  return (
+    <Route {...rest}>
+      {tokenExists && isRenter ? children : <Redirect to="/login" />}
+    </Route>
+  );
+}
+
+function PrivateRouteOwner({ children, ...rest }) {
+  const tokenExists = !!localStorage.getItem("token");
+  const isOwner = localStorage.getItem("type") === "owner";
+  return (
+    <Route {...rest}>
+      {tokenExists && isOwner ? children : <Redirect to="/login" />}
+    </Route>
   );
 }
 

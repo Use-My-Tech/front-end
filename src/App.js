@@ -34,9 +34,14 @@ function App({ logout }) {
         )}
 
         {type === "owner" && (
+          <>
           <NavLink exact to="/owner" activeClassName="active" replace>
             owner
           </NavLink>
+          <NavLink exact to="/owner/items" activeClassName="active" replace>
+          your items
+        </NavLink>
+        </>
         )}
 
         {type === "renter" && (

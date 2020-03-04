@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import * as actionCreators from "./state/actionCreators";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
-import Home from "./Components/Home";
 import OwnerDashboard from "./Components/OwnerDashboard";
 import RenterDashboard from "./Components/RenterDashboard";
 import ItemById from "./Components/ItemById";
@@ -15,7 +14,7 @@ const type = localStorage.getItem("type");
 
 function App({ logout }) {
   const history = useHistory();
-  
+
   return (
     <div className="App">
       <nav>
@@ -35,19 +34,24 @@ function App({ logout }) {
 
         {type === "owner" && (
           <>
-          <NavLink exact to="/owner" activeClassName="active" replace>
-            owner
-          </NavLink>
-          <NavLink exact to="/owner/items" activeClassName="active" replace>
-          your items
-        </NavLink>
-        </>
+            <NavLink exact to="/owner" activeClassName="active" replace>
+              all items
+            </NavLink>
+            <NavLink exact to="/owner/items" activeClassName="active" replace>
+              your items
+            </NavLink>
+          </>
         )}
 
         {type === "renter" && (
-          <NavLink exact to="/renter" activeClassName="active" replace>
-            renter
-          </NavLink>
+          <>
+            <NavLink exact to="/renter" activeClassName="active" replace>
+              rent
+            </NavLink>
+            <NavLink exact to="/renter/cart" activeClassName="active" replace>
+              cart
+            </NavLink>
+          </>
         )}
 
         {!!localStorage.getItem("token") && (
@@ -57,9 +61,7 @@ function App({ logout }) {
         )}
       </nav>
 
-      <UnloggedRoute exact path="/">
-        <Home />
-      </UnloggedRoute>
+      <Redirect exact path="/" to="/login"/>
 
       <UnloggedRoute path="/signup">
         <Signup />
@@ -91,7 +93,9 @@ function App({ logout }) {
 function UnloggedRoute({ children, ...rest }) {
   const tokenExists = !!localStorage.getItem("token");
   return (
-    <Route {...rest}>{!tokenExists ? children : <Redirect to={`/${type}`} />}</Route>
+    <Route {...rest}>
+      {!tokenExists ? children : <Redirect to={`/${type}`} />}
+    </Route>
   );
 }
 
@@ -106,7 +110,9 @@ function PrivateRouteRenter({ children, ...rest }) {
   const tokenExists = !!localStorage.getItem("token");
   const isRenter = localStorage.getItem("type") === "renter";
   return (
-    <Route {...rest}>{tokenExists && isRenter ? children : <Redirect to="/login" />}</Route>
+    <Route {...rest}>
+      {tokenExists && isRenter ? children : <Redirect to="/login" />}
+    </Route>
   );
 }
 
@@ -114,7 +120,9 @@ function PrivateRouteOwner({ children, ...rest }) {
   const tokenExists = !!localStorage.getItem("token");
   const isOwner = localStorage.getItem("type") === "owner";
   return (
-    <Route {...rest}>{tokenExists && isOwner ? children : <Redirect to="/login" />}</Route>
+    <Route {...rest}>
+      {tokenExists && isOwner ? children : <Redirect to="/login" />}
+    </Route>
   );
 }
 

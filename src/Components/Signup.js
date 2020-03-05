@@ -13,7 +13,7 @@ function Signup({ signupForm, changeHandler, departmentCheck, onSignup }) {
       <Form>
         <h1>Signup</h1>
         <label>
-          username:
+          username
           <Input
             name="username"
             onChange={changeHandler}
@@ -21,7 +21,7 @@ function Signup({ signupForm, changeHandler, departmentCheck, onSignup }) {
           />
         </label>
         <label>
-          password:
+          password
           <Input
             name="password"
             onChange={changeHandler}
@@ -36,7 +36,7 @@ function Signup({ signupForm, changeHandler, departmentCheck, onSignup }) {
             departmentCheck(checked);
           }}
         >
-          {checked ? "type: renter" : "type: owner"}
+          {checked ? "renter" : "owner"}
         </TypeButton>
         </label>
         <Button

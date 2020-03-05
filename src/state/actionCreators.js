@@ -92,3 +92,11 @@ export const logout = history => dispatch => {
   localStorage.removeItem("type");
   history.push("/login");
 };
+
+export const addToCart = (item) => dispatch => {
+  dispatch({type: types.ADD_TO_CART, payload: item})
+}
+
+export const deleteToCart = (item) => dispatch => {
+  dispatch({type: types.DELETE_TO_CART, payload: item})
+}

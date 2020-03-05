@@ -97,9 +97,19 @@ export const Card = styled.div`
 
 export const Image = styled.img`
     width: 10%;
+    height: 23%;
     cursor: pointer;
 `
 
 export const DeleteImg = styled.img`
     cursor: pointer;
+`
+
+export const CartCounter = styled.a`
+    background: orange;
+    padding: 0px 9px 2px;
+    border-radius: 100%;
+    &:hover {
+        color: #d8d8d8;
+    }
 `

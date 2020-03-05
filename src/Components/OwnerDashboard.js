@@ -6,7 +6,6 @@ import ItemCard from "./ItemCard";
 import { CardContainer } from "../styles/styled";
 
 function OwnerDashboard({ data, fetch }) {
-  const id = localStorage.getItem("user");
 
   useEffect(() => {
     fetch("https://usetechstuff.herokuapp.com/api/items")

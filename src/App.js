@@ -15,9 +15,9 @@ import RenterCart from "./Components/RenterCart";
 
 //styles
 import "./styles/App.css";
-import { Button, Nav } from "./styles/styled";
+import { Button, Nav, CartCounter } from "./styles/styled";
 
-function App({ logout }) {
+function App({ logout, cart }) {
   const history = useHistory();
   const type = localStorage.getItem("type");
 
@@ -53,7 +53,7 @@ function App({ logout }) {
               rent
             </NavLink>
             <NavLink exact to="/renter/cart" activeClassName="active" replace>
-              cart
+              cart <CartCounter>{cart.length}</CartCounter>
             </NavLink>
           </>
         )}
@@ -73,7 +73,7 @@ function App({ logout }) {
 
       <UnloggedRoute path="/login">
         <Login />
-      </UnloggedRoute>
+      </UnloggedRoute> 
 
       <PrivateRouteOwner exact path="/owner">
         <OwnerDashboard />
@@ -138,7 +138,8 @@ function PrivateRouteOwner({ children, ...rest }) {
 
 function mapStateToProps(state) {
   return {
-    loginForm: state.loginForm
+    loginForm: state.loginForm,
+    cart: state.cart,
   };
 }
 

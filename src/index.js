@@ -9,7 +9,8 @@ import {
   loginFormReducer,
   signupFormReducer,
   addFormReducer,
-  dataReducer
+  dataReducer,
+  cartReducer
 } from "./state/reducers";
 import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
@@ -18,7 +19,8 @@ const combinedReducer = combineReducers({
   loginForm: loginFormReducer,
   signupForm: signupFormReducer,
   addForm: addFormReducer,
-  data: dataReducer
+  data: dataReducer,
+  cart: cartReducer
 });
 
 const store = createStore(

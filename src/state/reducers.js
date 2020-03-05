@@ -100,3 +100,20 @@ export function dataReducer(state = initialDataState, action) {
       return state;
   }
 }
+
+const initialCartState = []
+
+export function cartReducer(state = initialCartState, action) {
+  switch (action.type) {
+    case types.ADD_TO_CART:
+      if(state.includes(action.payload)) {
+        return state;
+      } else {
+        return state.concat(action.payload);
+      }
+    case types.DELETE_TO_CART:
+      return state.filter(item => item !== action.payload);
+    default:
+      return state;
+  }
+}

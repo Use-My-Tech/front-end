@@ -14,6 +14,10 @@ a:hover {
   color: #afafaf
 }
 
+p {
+  margin: 3px 0;
+}
+
 #form-button {
   margin-top: 10px;
 }

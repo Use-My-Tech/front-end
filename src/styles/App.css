@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   background: turquoise;
-  height: 110vh;
+  min-height: 100vh;
 }
 
 a {

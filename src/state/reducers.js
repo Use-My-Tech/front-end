@@ -19,10 +19,7 @@ export function loginFormReducer(state = initialLoginFormState, action) {
         isSubmitting: true
       };
     case types.LOGIN_END:
-      return {
-        ...state,
-        isSubmitting: false
-      };
+      return initialLoginFormState;
     default:
       return state;
   }
@@ -74,7 +71,7 @@ const initialAddFormState = {
 
 export function addFormReducer(state = initialAddFormState, action) {
   switch (action.type) {
-    case types.INPUT_CHANGE:
+    case types.ITEM_INPUT_CHANGE:
       return {
         ...state,
         [action.payload[0]]: action.payload[1]

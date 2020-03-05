@@ -8,6 +8,13 @@ export const changeHandler = e => dispatch => {
   });
 };
 
+export const itemChangeHandler = e => dispatch => {
+  dispatch({
+    type: types.ITEM_INPUT_CHANGE,
+    payload: [e.target.name, e.target.value]
+  });
+};
+
 export const onLogin = (formValues, history) => dispatch => {
   dispatch({ type: types.LOGIN_START });
   axios()

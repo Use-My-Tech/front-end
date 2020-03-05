@@ -1,4 +1,5 @@
 export const INPUT_CHANGE = "INPUT_CHANGE";
+export const ITEM_INPUT_CHANGE = "ITEM_INPUT_CHANGE";
 //login
 export const LOGIN = "LOGIN";
 export const LOGIN_START = "LOGIN_START";

@@ -11,7 +11,7 @@ import {
   Input
 } from "../styles/styled";
 
-function OwnerItems({ addForm, data, changeHandler, onAdd, fetch }) {
+function OwnerItems({ addForm, data, itemChangeHandler, onAdd, fetch }) {
   const id = Number(localStorage.getItem("user"));
   const filteredData = data.filter(item => item.user_id === id);
   const [isData, setIsData] = useState(false);
@@ -31,7 +31,7 @@ function OwnerItems({ addForm, data, changeHandler, onAdd, fetch }) {
             name
             <Input
               name="item_name"
-              onChange={changeHandler}
+              onChange={itemChangeHandler}
               value={addForm.item_name}
             />
           </label>
@@ -39,7 +39,7 @@ function OwnerItems({ addForm, data, changeHandler, onAdd, fetch }) {
             daily-rate
             <Input
               name="daily_rate"
-              onChange={changeHandler}
+              onChange={itemChangeHandler}
               value={addForm.daily_rate}
               type="number"
             />
@@ -48,7 +48,7 @@ function OwnerItems({ addForm, data, changeHandler, onAdd, fetch }) {
             condition
             <Input
               name="condition"
-              onChange={changeHandler}
+              onChange={itemChangeHandler}
               value={addForm.condition}
             />
           </label>
@@ -56,7 +56,7 @@ function OwnerItems({ addForm, data, changeHandler, onAdd, fetch }) {
             address
             <Input
               name="location"
-              onChange={changeHandler}
+              onChange={itemChangeHandler}
               value={addForm.location}
             />
           </label>
@@ -64,7 +64,7 @@ function OwnerItems({ addForm, data, changeHandler, onAdd, fetch }) {
             description
             <Input
               name="description"
-              onChange={changeHandler}
+              onChange={itemChangeHandler}
               value={addForm.description}
             />
           </label>

@@ -21,7 +21,6 @@ function App({ logout, cart }) {
   const history = useHistory();
   const type = localStorage.getItem("type");
 
-
   return (
     <div className="App">
       <Nav>
@@ -65,15 +64,15 @@ function App({ logout, cart }) {
         )}
       </Nav>
 
-      <Redirect exact path="/" to="/login"/>
-          
+      <Redirect exact path="/" to="/login" />
+
       <UnloggedRoute path="/signup">
         <Signup />
       </UnloggedRoute>
 
       <UnloggedRoute path="/login">
         <Login />
-      </UnloggedRoute> 
+      </UnloggedRoute>
 
       <PrivateRouteOwner exact path="/owner">
         <OwnerDashboard />
@@ -94,7 +93,6 @@ function App({ logout, cart }) {
       <LoggedRoute path="/item:id">
         <ItemById />
       </LoggedRoute>
-      
     </div>
   );
 }
@@ -139,7 +137,7 @@ function PrivateRouteOwner({ children, ...rest }) {
 function mapStateToProps(state) {
   return {
     loginForm: state.loginForm,
-    cart: state.cart,
+    cart: state.cart
   };
 }
 

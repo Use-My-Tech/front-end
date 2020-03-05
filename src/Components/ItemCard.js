@@ -19,24 +19,22 @@ function ItemCard({ cart, item, addToCart, deleteToCart, deleteItem }) {
       {id === item.user_id && window.location.pathname === "/owner/items" ? (
         <DeleteImg src={deleteImg} onClick={evt => deleteItem(item.id)} />
       ) : null}
-
       <h3>
-        {item.item_name} {item.daily_rate}$/day
+        {item.item_name} {item.daily_rate}$/day <br /> condition:{" "}
+        {item.condition}
       </h3>
       {item.imgs === "" ? (
         <Button onClick={showItem}>show</Button>
       ) : (
         <Image src={item.imgs} alt="" onClick={showItem} />
       )}
-
       <p>
-        condition: {item.condition} address: {item.location} <br />{" "}
-        {item.description}
+        address: {item.location} <br /> {item.description}
       </p>
-
-      {type === "renter" && !cart.includes(item) ? (
+      {type === "renter" && !cart.includes(item) && (
         <Button onClick={evt => addToCart(item)}>Add To Cart</Button>
-      ) : (
+      )}{" "}
+      {type === "renter" && cart.includes(item) && (
         <DeleteImg src={deleteImg} onClick={evt => deleteToCart(item)} />
       )}
     </Card>

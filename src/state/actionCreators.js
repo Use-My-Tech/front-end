@@ -49,16 +49,16 @@ export const onSignup = (formValues, history) => dispatch => {
     });
 };
 
-export const fetch = (url) => dispatch => {
+export const fetch = url => dispatch => {
   axios()
-      .get(url)
-      .then(res => {
-        dispatch({type: types.FETCH, payload: res.data});
-      })
-      .catch(err => {
-        console.log(err);
-      });
-}
+    .get(url)
+    .then(res => {
+      dispatch({ type: types.FETCH, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
 export const onAdd = (formValues, userID) => dispatch => {
   axios()
@@ -79,7 +79,7 @@ export const deleteItem = id => dispatch => {
   axios()
     .delete(`https://usetechstuff.herokuapp.com/api/item/${id}`)
     .then(res => {
-      dispatch({type: types.DELETE_ITEM, payload: id})
+      dispatch({ type: types.DELETE_ITEM, payload: id });
     })
     .catch(err => {
       console.log(err);
@@ -93,10 +93,10 @@ export const logout = history => dispatch => {
   history.push("/login");
 };
 
-export const addToCart = (item) => dispatch => {
-  dispatch({type: types.ADD_TO_CART, payload: item})
-}
+export const addToCart = item => dispatch => {
+  dispatch({ type: types.ADD_TO_CART, payload: item });
+};
 
-export const deleteToCart = (item) => dispatch => {
-  dispatch({type: types.DELETE_TO_CART, payload: item})
-}
+export const deleteToCart = item => dispatch => {
+  dispatch({ type: types.DELETE_TO_CART, payload: item });
+};

@@ -86,7 +86,7 @@ export function addFormReducer(state = initialAddFormState, action) {
   }
 }
 
-const initialDataState = []
+const initialDataState = [];
 
 export function dataReducer(state = initialDataState, action) {
   switch (action.type) {
@@ -101,12 +101,12 @@ export function dataReducer(state = initialDataState, action) {
   }
 }
 
-const initialCartState = []
+const initialCartState = [];
 
 export function cartReducer(state = initialCartState, action) {
   switch (action.type) {
     case types.ADD_TO_CART:
-      if(state.includes(action.payload)) {
+      if (state.includes(action.payload)) {
         return state;
       } else {
         return state.concat(action.payload);

@@ -5,20 +5,17 @@ import ItemCard from "./ItemCard";
 
 import { CardContainer } from "../styles/styled";
 
-function RenterDashboard({data, fetch}) {
-
+function RenterDashboard({ data, fetch }) {
   useEffect(() => {
-    fetch("https://usetechstuff.herokuapp.com/api/items")
+    fetch("https://usetechstuff.herokuapp.com/api/items");
   }, []);
 
   return (
     <div>
       <CardContainer>
-      {data.map(item => {
-        return (
-          <ItemCard key={item.id} item={item}/>
-        );
-      })}
+        {data.map(item => {
+          return <ItemCard key={item.id} item={item} />;
+        })}
       </CardContainer>
     </div>
   );

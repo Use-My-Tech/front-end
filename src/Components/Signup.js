@@ -29,15 +29,15 @@ function Signup({ signupForm, changeHandler, departmentCheck, onSignup }) {
           />
         </label>
         <label>
-        <TypeButton
-          type="button"
-          onClick={evt => {
-            setChecked(!checked);
-            departmentCheck(checked);
-          }}
-        >
-          {checked ? "renter" : "owner"}
-        </TypeButton>
+          <TypeButton
+            type="button"
+            onClick={evt => {
+              setChecked(!checked);
+              departmentCheck(checked);
+            }}
+          >
+            {checked ? "choose your type: renter" : "choose your type: owner"}
+          </TypeButton>
         </label>
         <Button
           id="form-button"

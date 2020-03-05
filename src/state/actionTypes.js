@@ -15,5 +15,4 @@ export const DELETE_ITEM = "DELETE_ITEM";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const DELETE_TO_CART = "DELETE_TO_CART";
 //data
-export const FETCH ="FETCH";
-
+export const FETCH = "FETCH";

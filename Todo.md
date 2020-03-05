@@ -10,7 +10,7 @@ MVP
 3. They can then set up items they have for rent such as cameras, TVs, Party equipment like speakers/fog machines etc. x
 4. Users will be able to Create x, Read x, Update and Delete x rental data. - A 2nd user can log in and see items that users have for rent and ask to rent an item.
 
-add an add to cart for renters that render in /renter/cart & finish css :p
+add an add to cart for renters x that render in /renter/cart x & finish css :p
 
 STRETCH
 1. Add a payment option into the application allowing people to pay over paypal/stripe etc. to rent their items

@@ -12,23 +12,23 @@ function Login({ loginForm, changeHandler, onLogin }) {
       <Form>
         <h1>Login</h1>
         <label htmlFor="username">username</label>
-          
-          <Input
-            id="username"
-            name="username"
-            onChange={changeHandler}
-            value={loginForm.username}
-          />
-        
+
+        <Input
+          id="username"
+          name="username"
+          onChange={changeHandler}
+          value={loginForm.username}
+        />
+
         <label htmlFor="password">password</label>
-          
-          <Input
-            id="password"
-            name="password"
-            onChange={changeHandler}
-            value={loginForm.password}
-          />
-        
+
+        <Input
+          id="password"
+          name="password"
+          onChange={changeHandler}
+          value={loginForm.password}
+        />
+
         <Button
           id="form-button"
           disabled={loginForm.isSubmitting}

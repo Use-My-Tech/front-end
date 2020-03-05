@@ -3,20 +3,20 @@ import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 import ItemCard from "./ItemCard";
 
-function RenterDashboard({data, fetch}) {
+import { CardContainer } from "../styles/styled";
 
+function RenterDashboard({ data, fetch }) {
   useEffect(() => {
-    fetch("https://usetechstuff.herokuapp.com/api/items")
+    fetch("https://usetechstuff.herokuapp.com/api/items");
   }, []);
 
   return (
     <div>
-      renter dashboard
-      {data.map(item => {
-        return (
-          <ItemCard key={item.id} item={item}/>
-        );
-      })}
+      <CardContainer>
+        {data.map(item => {
+          return <ItemCard key={item.id} item={item} />;
+        })}
+      </CardContainer>
     </div>
   );
 }

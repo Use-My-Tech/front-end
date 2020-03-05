@@ -11,6 +11,8 @@ export const DEPARTMENT_CHECK = "DEPARTMENT_CHECK";
 //owner
 export const ADD_ITEM = "ADD_ITEM";
 export const DELETE_ITEM = "DELETE_ITEM";
+//renter
+export const ADD_TO_CART = "ADD_TO_CART";
+export const DELETE_TO_CART = "DELETE_TO_CART";
 //data
-export const FETCH ="FETCH";
-
+export const FETCH = "FETCH";

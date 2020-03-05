@@ -3,36 +3,42 @@ import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 import { useHistory } from "react-router-dom";
 
+import { Button, Container, Form, Input } from "../styles/styled";
+
 function Login({ loginForm, changeHandler, onLogin }) {
   const history = useHistory();
   return (
-    <>
-      <form>
-        <label>
-          username:
-          <input
-            name="username"
-            onChange={changeHandler}
-            value={loginForm.username}
-          />
-        </label>
-        <label>
-          password:
-          <input
-            name="password"
-            onChange={changeHandler}
-            value={loginForm.password}
-          />
-        </label>
-        <button
+    <Container>
+      <Form>
+        <h1>Login</h1>
+        <label htmlFor="username">username</label>
+
+        <Input
+          id="username"
+          name="username"
+          onChange={changeHandler}
+          value={loginForm.username}
+        />
+
+        <label htmlFor="password">password</label>
+
+        <Input
+          id="password"
+          name="password"
+          onChange={changeHandler}
+          value={loginForm.password}
+        />
+
+        <Button
+          id="form-button"
           disabled={loginForm.isSubmitting}
           type="button"
           onClick={evt => onLogin(loginForm, history)}
         >
           LOGIN
-        </button>
-      </form>
-    </>
+        </Button>
+      </Form>
+    </Container>
   );
 }
 

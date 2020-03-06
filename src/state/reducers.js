@@ -114,3 +114,14 @@ export function cartReducer(state = initialCartState, action) {
       return state;
   }
 }
+
+export function spinnerReducer(state = false, action) {
+  switch (action.type) {
+    case types.SPINNER_START:
+      return true;
+    case types.SPINNER_STOP:
+      return false;
+    default:
+      return state;
+  }
+}

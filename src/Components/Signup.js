@@ -5,7 +5,13 @@ import { useHistory } from "react-router-dom";
 
 import { Button, Container, Input, Form, TypeButton } from "../styles/styled";
 
-function Signup({ signupForm, changeHandler, departmentCheck, onSignup }) {
+function Signup({
+  signupForm,
+  spinner,
+  changeHandler,
+  departmentCheck,
+  onSignup
+}) {
   const [checked, setChecked] = useState(false);
   const history = useHistory();
   return (
@@ -45,7 +51,7 @@ function Signup({ signupForm, changeHandler, departmentCheck, onSignup }) {
           type="button"
           onClick={evt => onSignup(signupForm, history)}
         >
-          SIGN UP
+          {spinner ? "...LOADING" : "SIGNUP"}
         </Button>
       </Form>
     </Container>
@@ -54,7 +60,8 @@ function Signup({ signupForm, changeHandler, departmentCheck, onSignup }) {
 
 function mapStateToProps(state) {
   return {
-    signupForm: state.signupForm
+    signupForm: state.signupForm,
+    spinner: state.spinner
   };
 }
 

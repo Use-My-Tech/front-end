@@ -11,7 +11,14 @@ import {
   Input
 } from "../styles/styled";
 
-function OwnerItems({ addForm, data, itemChangeHandler, onAdd, fetch }) {
+function OwnerItems({
+  addForm,
+  data,
+  spinner,
+  itemChangeHandler,
+  onAdd,
+  fetch
+}) {
   const id = Number(localStorage.getItem("user"));
   const filteredData = data.filter(item => item.user_id === id);
   const [isData, setIsData] = useState(false);
@@ -73,19 +80,21 @@ function OwnerItems({ addForm, data, itemChangeHandler, onAdd, fetch }) {
             type="button"
             onClick={evt => onAdd(addForm, id)}
           >
-            SUBMIT
+            {spinner ? "...LOADING" : "SUBMIT"}
           </Button>
         </Form>
       </Container>
-      <CardContainer>
-        {isData
-          ? data.map(item => {
-              return <ItemCard key={item.id} item={item} />;
-            })
-          : filteredData.map(item => {
-              return <ItemCard key={item.id} item={item} />;
-            })}
-      </CardContainer>
+       
+        <CardContainer>
+          {isData
+            ? data.map(item => {
+                return <ItemCard key={item.id} item={item} />;
+              })
+            : filteredData.map(item => {
+                return <ItemCard key={item.id} item={item} />;
+              })}
+        </CardContainer>
+      
     </>
   );
 }
@@ -93,7 +102,8 @@ function OwnerItems({ addForm, data, itemChangeHandler, onAdd, fetch }) {
 function mapStateToProps(state) {
   return {
     addForm: state.addForm,
-    data: state.data
+    data: state.data,
+    spinner: state.spinner
   };
 }
 

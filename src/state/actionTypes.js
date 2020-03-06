@@ -1,3 +1,7 @@
+//spinner
+export const SPINNER_START = "SPINNER_START";
+export const SPINNER_STOP = "SPINNER_STOP";
+//inputs
 export const INPUT_CHANGE = "INPUT_CHANGE";
 export const ITEM_INPUT_CHANGE = "ITEM_INPUT_CHANGE";
 //login

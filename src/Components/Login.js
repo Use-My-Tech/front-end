@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import { Button, Container, Form, Input } from "../styles/styled";
 
-function Login({ loginForm, changeHandler, onLogin }) {
+function Login({ loginForm, spinner, changeHandler, onLogin }) {
   const history = useHistory();
   return (
     <Container>
@@ -35,7 +35,7 @@ function Login({ loginForm, changeHandler, onLogin }) {
           type="button"
           onClick={evt => onLogin(loginForm, history)}
         >
-          LOGIN
+          {spinner ? "...LOADING" : "LOGIN"}
         </Button>
       </Form>
     </Container>
@@ -44,7 +44,8 @@ function Login({ loginForm, changeHandler, onLogin }) {
 
 function mapStateToProps(state) {
   return {
-    loginForm: state.loginForm
+    loginForm: state.loginForm,
+    spinner: state.spinner
   };
 }
 

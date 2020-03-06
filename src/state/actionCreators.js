@@ -17,6 +17,7 @@ export const itemChangeHandler = e => dispatch => {
 
 export const onLogin = (formValues, history) => dispatch => {
   dispatch({ type: types.LOGIN_START });
+  dispatch({ type: types.SPINNER_START });
   axios()
     .post("https://usetechstuff.herokuapp.com/api/login", formValues)
     .then(res => {
@@ -31,6 +32,7 @@ export const onLogin = (formValues, history) => dispatch => {
     })
     .finally(() => {
       dispatch({ type: types.LOGIN_END });
+      dispatch({ type: types.SPINNER_STOP });
     });
 };
 
@@ -41,6 +43,7 @@ export const departmentCheck = bool => dispatch => {
 
 export const onSignup = (formValues, history) => dispatch => {
   dispatch({ type: types.SIGNUP_START });
+  dispatch({ type: types.SPINNER_START });
   delete formValues["isSubmitting"];
   axios()
     .post("https://usetechstuff.herokuapp.com/api/register", formValues)
@@ -53,10 +56,12 @@ export const onSignup = (formValues, history) => dispatch => {
     })
     .finally(() => {
       dispatch({ type: types.SIGNUP_END });
+      dispatch({ type: types.SPINNER_STOP });
     });
 };
 
 export const fetch = url => dispatch => {
+  dispatch({ type: types.SPINNER_START });
   axios()
     .get(url)
     .then(res => {
@@ -64,10 +69,14 @@ export const fetch = url => dispatch => {
     })
     .catch(err => {
       console.log(err);
+    })
+    .finally(() => {
+      dispatch({ type: types.SPINNER_STOP });
     });
 };
 
 export const onAdd = (formValues, userID) => dispatch => {
+  dispatch({ type: types.SPINNER_START });
   axios()
     .post(
       `https://usetechstuff.herokuapp.com/api/users/${userID}/items`,
@@ -79,10 +88,14 @@ export const onAdd = (formValues, userID) => dispatch => {
     })
     .catch(err => {
       console.log(err);
+    })
+    .finally(() => {
+      dispatch({ type: types.SPINNER_STOP });
     });
 };
 
 export const deleteItem = id => dispatch => {
+  dispatch({ type: types.SPINNER_START });
   axios()
     .delete(`https://usetechstuff.herokuapp.com/api/item/${id}`)
     .then(res => {
@@ -90,6 +103,9 @@ export const deleteItem = id => dispatch => {
     })
     .catch(err => {
       console.log(err);
+    })
+    .finally(() => {
+      dispatch({ type: types.SPINNER_STOP });
     });
 };
 

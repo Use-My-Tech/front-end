@@ -3,27 +3,32 @@ import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 import ItemCard from "./ItemCard";
 
-import { CardContainer } from "../styles/styled";
+import { CardContainer, Center } from "../styles/styled";
 
-function OwnerDashboard({ data, fetch }) {
+function OwnerDashboard({ data, spinner, fetch }) {
   useEffect(() => {
     fetch("https://usetechstuff.herokuapp.com/api/items");
   }, []);
 
   return (
     <div>
-      <CardContainer>
-        {data.map(item => {
-          return <ItemCard key={item.id} item={item} />;
-        })}
-      </CardContainer>
+      {spinner ? (
+        <Center><div id="loading"></div></Center>
+      ) : (
+        <CardContainer>
+          {data.map(item => {
+            return <ItemCard key={item.id} item={item} />;
+          })}
+        </CardContainer>
+      )}
     </div>
   );
 }
 
 function mapStateToProps(state) {
   return {
-    data: state.data
+    data: state.data,
+    spinner: state.spinner
   };
 }
 

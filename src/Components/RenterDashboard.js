@@ -7,7 +7,7 @@ import { CardContainer, Center } from "../styles/styled";
 
 function RenterDashboard({ data, spinner, fetch }) {
   useEffect(() => {
-    fetch("https://usetechstuff.herokuapp.com/api/items");
+    fetch("https://eu-use-my-tech.herokuapp.com/api/items");
   }, []);
 
   return (

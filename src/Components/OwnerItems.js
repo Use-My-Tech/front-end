@@ -26,7 +26,7 @@ function OwnerItems({
   useEffect(() => {
     if (data.length === 0) {
       setIsData(true);
-      fetch(`https://usetechstuff.herokuapp.com/api/users/${id}/items`);
+      fetch(`https://eu-use-my-tech.herokuapp.com/api/users/${id}/items`);
     }
   }, []);
 

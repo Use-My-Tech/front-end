@@ -19,7 +19,7 @@ export const onLogin = (formValues, history) => dispatch => {
   dispatch({ type: types.LOGIN_START });
   dispatch({ type: types.SPINNER_START });
   axios()
-    .post("https://usetechstuff.herokuapp.com/api/login", formValues)
+    .post("https://eu-use-my-tech.herokuapp.com/api/login", formValues)
     .then(res => {
       dispatch({ type: types.LOGIN });
       localStorage.setItem("type", res.data.user.department);
@@ -46,7 +46,7 @@ export const onSignup = (formValues, history) => dispatch => {
   dispatch({ type: types.SPINNER_START });
   delete formValues["isSubmitting"];
   axios()
-    .post("https://usetechstuff.herokuapp.com/api/register", formValues)
+    .post("https://eu-use-my-tech.herokuapp.com/api/register", formValues)
     .then(res => {
       dispatch({ type: types.SIGNUP });
       history.push(`/login`);
@@ -79,7 +79,7 @@ export const onAdd = (formValues, userID) => dispatch => {
   dispatch({ type: types.SPINNER_START });
   axios()
     .post(
-      `https://usetechstuff.herokuapp.com/api/users/${userID}/items`,
+      `https://eu-use-my-tech.herokuapp.com/api/users/${userID}/items`,
       formValues
     )
     .then(res => {
@@ -97,7 +97,7 @@ export const onAdd = (formValues, userID) => dispatch => {
 export const deleteItem = id => dispatch => {
   dispatch({ type: types.SPINNER_START });
   axios()
-    .delete(`https://usetechstuff.herokuapp.com/api/items/${id}`)
+    .delete(`https://eu-use-my-tech.herokuapp.com/api/items/${id}`)
     .then(res => {
       dispatch({ type: types.DELETE_ITEM, payload: id });
     })

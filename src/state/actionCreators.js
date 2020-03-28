@@ -97,7 +97,7 @@ export const onAdd = (formValues, userID) => dispatch => {
 export const deleteItem = id => dispatch => {
   dispatch({ type: types.SPINNER_START });
   axios()
-    .delete(`https://usetechstuff.herokuapp.com/api/item/${id}`)
+    .delete(`https://usetechstuff.herokuapp.com/api/items/${id}`)
     .then(res => {
       dispatch({ type: types.DELETE_ITEM, payload: id });
     })

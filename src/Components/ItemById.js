@@ -12,7 +12,7 @@ export default function ItemById() {
 
   useEffect(() => {
     axios()
-      .get(`https://usetechstuff.herokuapp.com/api/item/${id}`)
+      .get(`https://usetechstuff.herokuapp.com/api/items/${id}`)
       .then(res => {
         setItem(res.data);
       })

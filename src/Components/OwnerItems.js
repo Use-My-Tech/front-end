@@ -8,7 +8,7 @@ import {
   CardContainer,
   Container,
   Form,
-  Input
+  Input,
 } from "../styles/styled";
 
 function OwnerItems({
@@ -17,10 +17,10 @@ function OwnerItems({
   spinner,
   itemChangeHandler,
   onAdd,
-  fetch
+  fetch,
 }) {
   const id = Number(localStorage.getItem("user"));
-  const filteredData = data.filter(item => item.user_id === id);
+  const filteredData = data.filter((item) => item.user_id === id);
   const [isData, setIsData] = useState(false);
 
   useEffect(() => {
@@ -78,23 +78,22 @@ function OwnerItems({
           <Button
             id="form-button"
             type="button"
-            onClick={evt => onAdd(addForm, id)}
+            onClick={(evt) => onAdd(addForm, id)}
           >
             {spinner ? "...LOADING" : "SUBMIT"}
           </Button>
         </Form>
       </Container>
-       
-        <CardContainer>
-          {isData
-            ? data.map(item => {
-                return <ItemCard key={item.id} item={item} />;
-              })
-            : filteredData.map(item => {
-                return <ItemCard key={item.id} item={item} />;
-              })}
-        </CardContainer>
-      
+
+      <CardContainer>
+        {isData
+          ? data.map((item) => {
+              return <ItemCard key={item.id} item={item} />;
+            })
+          : filteredData.map((item) => {
+              return <ItemCard key={item.id} item={item} />;
+            })}
+      </CardContainer>
     </>
   );
 }
@@ -103,7 +102,7 @@ function mapStateToProps(state) {
   return {
     addForm: state.addForm,
     data: state.data,
-    spinner: state.spinner
+    spinner: state.spinner,
   };
 }
 

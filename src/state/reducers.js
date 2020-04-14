@@ -3,7 +3,7 @@ import * as types from "./actionTypes";
 const initialLoginFormState = {
   username: "",
   password: "",
-  isSubmitting: false
+  isSubmitting: false,
 };
 
 export function loginFormReducer(state = initialLoginFormState, action) {
@@ -11,12 +11,12 @@ export function loginFormReducer(state = initialLoginFormState, action) {
     case types.INPUT_CHANGE:
       return {
         ...state,
-        [action.payload[0]]: action.payload[1]
+        [action.payload[0]]: action.payload[1],
       };
     case types.LOGIN_START:
       return {
         ...state,
-        isSubmitting: true
+        isSubmitting: true,
       };
     case types.LOGIN_END:
       return initialLoginFormState;
@@ -29,7 +29,7 @@ const initialSignupFormState = {
   username: "",
   password: "",
   department: "owner",
-  isSubmitting: false
+  isSubmitting: false,
 };
 
 export function signupFormReducer(state = initialSignupFormState, action) {
@@ -37,22 +37,22 @@ export function signupFormReducer(state = initialSignupFormState, action) {
     case types.INPUT_CHANGE:
       return {
         ...state,
-        [action.payload[0]]: action.payload[1]
+        [action.payload[0]]: action.payload[1],
       };
     case types.DEPARTMENT_CHECK:
       return {
         ...state,
-        department: action.payload
+        department: action.payload,
       };
     case types.SIGNUP_START:
       return {
         ...state,
-        isSubmitting: true
+        isSubmitting: true,
       };
     case types.SIGNUP_END:
       return {
         ...state,
-        isSubmitting: false
+        isSubmitting: false,
       };
     default:
       return state;
@@ -66,7 +66,7 @@ const initialAddFormState = {
   daily_rate: "",
   condition: "",
   location: "",
-  imgs: ""
+  imgs: "",
 };
 
 export function addFormReducer(state = initialAddFormState, action) {
@@ -74,7 +74,7 @@ export function addFormReducer(state = initialAddFormState, action) {
     case types.ITEM_INPUT_CHANGE:
       return {
         ...state,
-        [action.payload[0]]: action.payload[1]
+        [action.payload[0]]: action.payload[1],
       };
     case types.ADD_ITEM:
       return initialAddFormState;
@@ -90,7 +90,7 @@ export function dataReducer(state = initialDataState, action) {
     case types.FETCH:
       return action.payload;
     case types.DELETE_ITEM:
-      return state.filter(item => item.id !== action.payload);
+      return state.filter((item) => item.id !== action.payload);
     case types.ADD_ITEM:
       return state.concat(action.payload);
     default:
@@ -109,7 +109,7 @@ export function cartReducer(state = initialCartState, action) {
         return state.concat(action.payload);
       }
     case types.DELETE_TO_CART:
-      return state.filter(item => item !== action.payload);
+      return state.filter((item) => item !== action.payload);
     default:
       return state;
   }

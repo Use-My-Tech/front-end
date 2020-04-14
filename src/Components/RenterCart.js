@@ -8,7 +8,7 @@ import { CardContainer } from "../styles/styled";
 function RenterCart({ cart }) {
   return (
     <CardContainer>
-      {cart.map(item => {
+      {cart.map((item) => {
         return <ItemCard key={item.id} item={item} />;
       })}
     </CardContainer>
@@ -17,7 +17,7 @@ function RenterCart({ cart }) {
 
 function mapStateToProps(state) {
   return {
-    cart: state.cart
+    cart: state.cart,
   };
 }
 

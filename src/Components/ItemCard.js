@@ -17,7 +17,7 @@ function ItemCard({ cart, item, addToCart, deleteToCart, deleteItem }) {
   return (
     <Card>
       {id === item.user_id && window.location.pathname === "/owner/items" ? (
-        <DeleteImg src={deleteImg} onClick={evt => deleteItem(item.id)} />
+        <DeleteImg src={deleteImg} onClick={(evt) => deleteItem(item.id)} />
       ) : null}
       <h3>
         {item.item_name} {item.daily_rate}$/day <br /> condition:{" "}
@@ -32,10 +32,10 @@ function ItemCard({ cart, item, addToCart, deleteToCart, deleteItem }) {
         address: {item.location} <br /> {item.description}
       </p>
       {type === "renter" && !cart.includes(item) && (
-        <Button onClick={evt => addToCart(item)}>Add To Cart</Button>
+        <Button onClick={(evt) => addToCart(item)}>Add To Cart</Button>
       )}{" "}
       {type === "renter" && cart.includes(item) && (
-        <DeleteImg src={deleteImg} onClick={evt => deleteToCart(item)} />
+        <DeleteImg src={deleteImg} onClick={(evt) => deleteToCart(item)} />
       )}
     </Card>
   );
@@ -43,7 +43,7 @@ function ItemCard({ cart, item, addToCart, deleteToCart, deleteItem }) {
 
 function mapStateToProps(state) {
   return {
-    cart: state.cart
+    cart: state.cart,
   };
 }
 

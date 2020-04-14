@@ -114,8 +114,8 @@ export const CartCounter = styled.a`
 `;
 
 export const Center = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-height: 70vh;
-`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+`;

@@ -10,7 +10,7 @@ function Signup({
   spinner,
   changeHandler,
   departmentCheck,
-  onSignup
+  onSignup,
 }) {
   const [checked, setChecked] = useState(false);
   const history = useHistory();
@@ -37,7 +37,7 @@ function Signup({
         <label>
           <TypeButton
             type="button"
-            onClick={evt => {
+            onClick={(evt) => {
               setChecked(!checked);
               departmentCheck(checked);
             }}
@@ -49,7 +49,7 @@ function Signup({
           id="form-button"
           disabled={signupForm.isSubmitting}
           type="button"
-          onClick={evt => onSignup(signupForm, history)}
+          onClick={(evt) => onSignup(signupForm, history)}
         >
           {spinner ? "...LOADING" : "SIGNUP"}
         </Button>
@@ -61,7 +61,7 @@ function Signup({
 function mapStateToProps(state) {
   return {
     signupForm: state.signupForm,
-    spinner: state.spinner
+    spinner: state.spinner,
   };
 }
 

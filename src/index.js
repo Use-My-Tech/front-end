@@ -11,7 +11,7 @@ import {
   addFormReducer,
   dataReducer,
   cartReducer,
-  spinnerReducer
+  spinnerReducer,
 } from "./state/reducers";
 import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";

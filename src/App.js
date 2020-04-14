@@ -58,7 +58,7 @@ function App({ logout, cart }) {
         )}
 
         {!!localStorage.getItem("token") && (
-          <Button type="button" onClick={evt => logout(history)}>
+          <Button type="button" onClick={(evt) => logout(history)}>
             logout
           </Button>
         )}
@@ -137,7 +137,7 @@ function PrivateRouteOwner({ children, ...rest }) {
 function mapStateToProps(state) {
   return {
     loginForm: state.loginForm,
-    cart: state.cart
+    cart: state.cart,
   };
 }
 

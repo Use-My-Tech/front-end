@@ -33,7 +33,7 @@ function Login({ loginForm, spinner, changeHandler, onLogin }) {
           id="form-button"
           disabled={loginForm.isSubmitting}
           type="button"
-          onClick={evt => onLogin(loginForm, history)}
+          onClick={(evt) => onLogin(loginForm, history)}
         >
           {spinner ? "...LOADING" : "LOGIN"}
         </Button>
@@ -45,7 +45,7 @@ function Login({ loginForm, spinner, changeHandler, onLogin }) {
 function mapStateToProps(state) {
   return {
     loginForm: state.loginForm,
-    spinner: state.spinner
+    spinner: state.spinner,
   };
 }
 

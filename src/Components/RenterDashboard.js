@@ -13,10 +13,12 @@ function RenterDashboard({ data, spinner, fetch }) {
   return (
     <div>
       {spinner ? (
-        <Center><div id="loading"></div></Center>
+        <Center>
+          <div id="loading"></div>
+        </Center>
       ) : (
         <CardContainer>
-          {data.map(item => {
+          {data.map((item) => {
             return <ItemCard key={item.id} item={item} />;
           })}
         </CardContainer>
@@ -28,7 +30,7 @@ function RenterDashboard({ data, spinner, fetch }) {
 function mapStateToProps(state) {
   return {
     data: state.data,
-    spinner: state.spinner
+    spinner: state.spinner,
   };
 }
 

@@ -13,10 +13,10 @@ export default function ItemById() {
   useEffect(() => {
     axios()
       .get(`https://eu-use-my-tech.herokuapp.com/api/items/${id}`)
-      .then(res => {
+      .then((res) => {
         setItem(res.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }, []);

@@ -9,10 +9,19 @@ export const changeHandler = (e) => (dispatch) => {
 };
 
 export const itemChangeHandler = (e) => (dispatch) => {
-  dispatch({
+  if (e.target.name === "imgs") {
+    dispatch({
+    type: types.ITEM_INPUT_CHANGE,
+    payload: [e.target.name, URL.createObjectURL(e.target.files[0])],
+  });
+    
+  } else {
+    dispatch({
     type: types.ITEM_INPUT_CHANGE,
     payload: [e.target.name, e.target.value],
   });
+  }
+  
 };
 
 export const onLogin = (formValues, history) => (dispatch) => {

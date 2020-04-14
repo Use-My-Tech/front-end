@@ -42,6 +42,10 @@ function OwnerItems({
               value={addForm.item_name}
             />
           </label>
+          
+            
+            <input name="imgs" onChange={itemChangeHandler} type="file" />
+          
           <label>
             daily-rate
             <Input
